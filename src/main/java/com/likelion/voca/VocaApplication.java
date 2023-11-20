@@ -9,4 +9,6 @@ public class VocaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(VocaApplication.class, args);
 	}
+
+	// 히히
 }
