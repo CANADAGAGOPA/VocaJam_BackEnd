@@ -11,6 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface JpTableRepository extends JpaRepository<JpTable, Integer> {
 
     Page<JpTable> findByMeaningContaining(String searchKeyword, Pageable pageable);
-
     Page<CnTable> findByWordContaining(String searchKeyword, Pageable pageable);
 }
