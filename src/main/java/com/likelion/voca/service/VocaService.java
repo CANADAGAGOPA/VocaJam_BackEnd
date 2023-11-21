@@ -23,19 +23,19 @@ public class VocaService {
     private JpTableRepository jpTableRepository;
 
     // 중국어 단어 작성 처리
-    public void cnwrite(CnTable cnTable){
+    public void cnWrite(CnTable cnTable){
 
         cnTableRepository.save(cnTable);
     }
 
     // 영어 단어 작성 처리
-    public void enwrite(EnTable enTable){
+    public void enWrite(EnTable enTable){
 
         enTableRepository.save(enTable);
     }
 
     // 일본어 단어 작성 처리
-    public void jpwrite(JpTable jpTable){
+    public void jpWrite(JpTable jpTable){
 
         jpTableRepository.save(jpTable);
     }
