@@ -1,6 +1,8 @@
 package com.likelion.voca.controller;
 
 import com.likelion.voca.entity.CnTable;
+import com.likelion.voca.entity.EnTable;
+import com.likelion.voca.entity.JpTable;
 import com.likelion.voca.service.VocaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +31,33 @@ public class WordsController {
 
         // 데이터가 존재할 경우 OK 상태코드와 함께 데이터 반환
         return ResponseEntity.ok(cnTableFields);
+    }
+
+    // "/words/en 엔드포인트로 GET 요청이 오면 영어 단어 필드들을 반환
+    @GetMapping("/en")
+    public ResponseEntity<List<EnTable>> getEnTableFields() {
+        List<EnTable> enTableFields = vocaService.getAllEnTableFields();
+
+        // 만약 데이터가 없을 경우 NOT_FOUND 상태코드 반환
+        if (enTableFields.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        // 데이터가 존재할 경우 OK 상태코드와 함께 데이터 반환
+        return ResponseEntity.ok(enTableFields);
+    }
+
+    // "/words/jp 엔드포인트로 GET 요청이 오면 일본어 단어 필드들을 반환
+    @GetMapping("/jp")
+    public ResponseEntity<List<JpTable>> getJpTableFields() {
+        List<JpTable> jpTableFields = vocaService.getAllJpTableFields();
+
+        // 만약 데이터가 없을 경우 NOT_FOUND 상태코드 반환
+        if (jpTableFields.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        // 데이터가 존재할 경우 OK 상태코드와 함께 데이터 반환
+        return ResponseEntity.ok(jpTableFields);
     }
 }

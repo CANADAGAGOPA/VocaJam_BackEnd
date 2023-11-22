@@ -48,4 +48,14 @@ public class VocaService {
     public List<CnTable> getAllCnTableFields() {
         return cnTableRepository.findAll();
     }
+
+    // 영어 단어의 필드들을 리스트로 가져오는 메서드
+    public List<EnTable> getAllEnTableFields() {
+        return enTableRepository.findAll();
+    }
+
+    // 일본어 단어의 필드들을 리스트로 가져오는 메서드
+    public List<JpTable> getAllJpTableFields() {
+        return jpTableRepository.findAll();
+    }
 }
