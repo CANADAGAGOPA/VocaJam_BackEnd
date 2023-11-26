@@ -58,4 +58,22 @@ public class VocaService {
     public List<JpTable> getAllJpTableFields() {
         return jpTableRepository.findAll();
     }
+
+    // 중국어 단어 삭제 처리
+    public void cnDelete(Integer id) {
+
+        cnTableRepository.deleteById(id);
+    }
+
+    // 영어 단어 삭제 처리
+    public void enDelete(Integer id) {
+
+        enTableRepository.deleteById(id);
+    }
+
+    // 일본어 단어 삭제 처리
+    public void jpDelete(Integer id) {
+
+        jpTableRepository.deleteById(id);
+    }
 }
