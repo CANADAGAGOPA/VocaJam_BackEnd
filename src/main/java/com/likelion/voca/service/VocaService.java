@@ -76,4 +76,48 @@ public class VocaService {
 
         jpTableRepository.deleteById(id);
     }
+
+    // 중국어 단어 수정 처리
+    public void updateCnWord(Integer id, CnTable updateCnTable) {
+
+        // 기존 중국어 단어를 불러와서 업데이트
+        CnTable existingCnTable = cnTableRepository.findById(id).orElse(null);
+
+        // 업데이트할 내용을 기존 데이터에 복사
+        existingCnTable.setWord(updateCnTable.getWord());
+        existingCnTable.setMeaning(updateCnTable.getMeaning());
+        existingCnTable.setPronunciation(updateCnTable.getPronunciation());
+
+        // 업데이트된 데이터를 저장
+        cnTableRepository.save(existingCnTable);
+    }
+
+    // 영어 단어 수정 처리
+    public void updateEnWord(Integer id, EnTable updateEnTable) {
+
+        // 기존 영어 단어를 불러와서 업데이트하는 로직
+        EnTable existingEnTable = enTableRepository.findById(id).orElse(null);
+
+        // 업데이트할 내용을 기존 데이터에 복사
+        existingEnTable.setWord(updateEnTable.getWord());
+        existingEnTable.setMeaning(updateEnTable.getMeaning());
+
+        // 업데이트된 데이터를 저장
+        enTableRepository.save(existingEnTable);
+    }
+
+    // 일본어 단어 수정 처리
+    public void updateJpWord(Integer id, JpTable updateJpTable) {
+
+        // 기존 일본어 단어를 불러와서 업데이트하는 로직
+        JpTable existingJpTable = jpTableRepository.findById(id).orElse(null);
+
+        // 업데이트할 내용을 기존 데이터에 복사
+        existingJpTable.setWord(updateJpTable.getWord());
+        existingJpTable.setMeaning(updateJpTable.getMeaning());
+        existingJpTable.setPronunciation(updateJpTable.getPronunciation());
+
+        // 업데이트된 데이터를 저장
+        jpTableRepository.save(existingJpTable);
+    }
 }

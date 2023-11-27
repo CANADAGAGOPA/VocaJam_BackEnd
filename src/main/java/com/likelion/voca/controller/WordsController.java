@@ -86,15 +86,15 @@ public class WordsController {
 
     // "/words/cn/{특정 단어 객체의 id 값}" 엔드포인트로 DELETE 요청이 오면 중국어 단어를 삭제
     @DeleteMapping("/cn/{id}")
-    public ResponseEntity<Void> deleteCnTable(@PathVariable Integer id) {
-        // 넘겨준 중국어 단어의 id 값을 통해 삭제
+    public ResponseEntity<Void> deleteCnTable(@PathVariable("id") Integer id) {
+        // 넘겨준 중국어 단어의 id 값을 통해 삭제)
         vocaService.cnDelete(id);
         return ResponseEntity.ok().build();
     }
 
     // "/words/en/{특정 단어 객체의 id 값}" 엔드포인트로 DELETE 요청이 오면 영어 단어를 삭제
     @DeleteMapping("/en/{id}")
-    public ResponseEntity<Void> deleteEnTable(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteEnTable(@PathVariable("id") Integer id) {
         // 넘겨준 영어 단어의 id 값을 통해 삭제
         vocaService.enDelete(id);
         return ResponseEntity.ok().build();
@@ -102,9 +102,34 @@ public class WordsController {
 
     // "/words/jp/{특정 단어 객체의 id 값}" 엔드포인트로 DELETE 요청이 오면 일본어 단어를 삭제
     @DeleteMapping("/jp/{id}")
-    public ResponseEntity<Void> deleteJpTable(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteJpTable(@PathVariable("id") Integer id) {
         // 넘겨준 일본어 단어의 id 값을 통해 삭제
         vocaService.jpDelete(id);
         return ResponseEntity.ok().build();
     }
+
+    // "/words/cn/{id}" 엔드포인트로 PUT 요청이 오면 중국어 단어를 수정
+    @PutMapping("/cn/{id}")
+    public ResponseEntity<Void> updateCnWord(@PathVariable Integer id, @RequestBody CnTable updateCnTable) {
+        // 업데이트된 중국어 단어 정보를 서비스를 통해 업데이트
+        vocaService.updateCnWord(id, updateCnTable);
+        return ResponseEntity.ok().build();
+    }
+
+    // "/words/en/{id}" 엔드포인트로 PUT 요청이 오면 영어 단어를 수정
+    @PutMapping("/en/{id}")
+    public ResponseEntity<Void> updateEnWord(@PathVariable Integer id, @RequestBody EnTable updateEnTable) {
+        // 업데이트된 영어 단어 정보를 서비스를 통해 업데이트
+        vocaService.updateEnWord(id, updateEnTable);
+        return ResponseEntity.ok().build();
+    }
+
+    // "/words/jp/{id}" 엔드포인트로 PUT 요청이 오면 일본어 단어를 수정
+    @PutMapping("/jp/{id}")
+    public ResponseEntity<Void> updateJpWord(@PathVariable Integer id, @RequestBody JpTable updateJpTable) {
+        // 업데이트된 일본어 단어 정보를 서비스를 통해 업데이트
+        vocaService.updateJpWord(id, updateJpTable);
+        return ResponseEntity.ok().build();
+    }
 }
+
