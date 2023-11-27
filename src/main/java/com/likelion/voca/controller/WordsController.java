@@ -62,7 +62,7 @@ public class WordsController {
 
     // "/words/cn" 엔드포인트로 POST 요청이 오면 중국어 단어를 저장
     @PostMapping("/cn")
-    public ResponseEntity<Void> updateCnTable(@RequestBody CnTable cnTable) throws IOException {
+    public ResponseEntity<Void> addCnTable(@RequestBody CnTable cnTable) throws IOException {
         // 받아온 중국어 단어 정보를 서비스를 통해 저장
         vocaService.cnWrite(cnTable);
         return ResponseEntity.ok().build();
@@ -70,7 +70,7 @@ public class WordsController {
 
     // "/words/en" 엔드포인트로 POST 요청이 오면 영어 단어를 저장
     @PostMapping("/en")
-    public ResponseEntity<Void> updateEnTable(@RequestBody EnTable enTable) throws IOException {
+    public ResponseEntity<Void> addEnTable(@RequestBody EnTable enTable) throws IOException {
         // 받아온 영어 단어 정보를 서비스를 통해 저장
         vocaService.enWrite(enTable);
         return ResponseEntity.ok().build();
@@ -78,7 +78,7 @@ public class WordsController {
 
     // "/words/jp" 엔드포인트로 POST 요청이 오면 일본어 단어를 저장
     @PostMapping("/jp")
-    public ResponseEntity<Void> updateJpTable(@RequestBody JpTable jpTable) throws IOException {
+    public ResponseEntity<Void> addJpTable(@RequestBody JpTable jpTable) throws IOException {
         // 받아온 일본어 단어 정보를 서비스를 통해 저장
         vocaService.jpWrite(jpTable);
         return ResponseEntity.ok().build();
