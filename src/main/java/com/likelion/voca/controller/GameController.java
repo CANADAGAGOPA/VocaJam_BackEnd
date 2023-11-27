@@ -1,6 +1,6 @@
 package com.likelion.voca.controller;
 
-import com.likelion.voca.service.VocaService;
+import com.likelion.voca.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,17 +16,15 @@ import java.util.Map;
 public class GameController {
 
     @Autowired
-    private VocaService vocaService;
-
-
+    private GameService GameService;
 
     @GetMapping("/jp")
     public ResponseEntity<Map<String, String>> getJPWordGame() {
         // 랜덤한 일본어 단어와 해당 단어의 의미를 가져오기
-        Map<String, String> wordAndMeaning = vocaService.getRandomJPWordAndMeaning();
+        Map<String, String> wordAndMeaning = GameService.getRandomJPWordAndMeaning();
 
         // 랜덤한 세 개의 다른 의미를 가져오기
-        List<String> otherMeanings = vocaService.getRandomOtherJPMeanings(wordAndMeaning.get("meaning"));
+        List<String> otherMeanings = GameService.getRandomOtherJPMeanings(wordAndMeaning.get("meaning"));
 
         // 응답에 필요한 데이터 구성
         Map<String, String> response = new HashMap<>();
@@ -44,10 +42,10 @@ public class GameController {
     @GetMapping("/cn")
     public ResponseEntity<Map<String, String>> getCNWordGame() {
         // 랜덤한 일본어 단어와 해당 단어의 의미를 가져오기
-        Map<String, String> wordAndMeaning = vocaService.getRandomCNWordAndMeaning();
+        Map<String, String> wordAndMeaning = GameService.getRandomCNWordAndMeaning();
 
         // 랜덤한 세 개의 다른 의미를 가져오기
-        List<String> otherMeanings = vocaService.getRandomOtherCNMeanings(wordAndMeaning.get("meaning"));
+        List<String> otherMeanings = GameService.getRandomOtherCNMeanings(wordAndMeaning.get("meaning"));
 
         // 응답에 필요한 데이터 구성
         Map<String, String> response = new HashMap<>();
@@ -65,10 +63,10 @@ public class GameController {
     @GetMapping("/en")
     public ResponseEntity<Map<String, String>> getENWordGame() {
         // 랜덤한 일본어 단어와 해당 단어의 의미를 가져오기
-        Map<String, String> wordAndMeaning = vocaService.getRandomENWordAndMeaning();
+        Map<String, String> wordAndMeaning = GameService.getRandomENWordAndMeaning();
 
         // 랜덤한 세 개의 다른 의미를 가져오기
-        List<String> otherMeanings = vocaService.getRandomOtherENMeanings(wordAndMeaning.get("meaning"));
+        List<String> otherMeanings = GameService.getRandomOtherENMeanings(wordAndMeaning.get("meaning"));
 
         // 응답에 필요한 데이터 구성
         Map<String, String> response = new HashMap<>();
