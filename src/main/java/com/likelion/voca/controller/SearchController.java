@@ -22,9 +22,9 @@ public class SearchController {
     }
 
     @GetMapping("/jp")
-    public ResponseEntity<List<JpTable>> searchJpWord(@RequestParam String word) {
+    public ResponseEntity<List<JpTable>> searchJpWord(@RequestParam String Search_Word) {
         try {
-            List<JpTable> result = searchService.searchJpWord(word);
+            List<JpTable> result = searchService.searchJpWord(Search_Word);
             return ResponseEntity.ok(result);
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();
@@ -32,9 +32,9 @@ public class SearchController {
     }
 
     @GetMapping("/en")
-    public ResponseEntity<List<EnTable>> searchEnWord(@RequestParam String word) {
+    public ResponseEntity<List<EnTable>> searchEnWord(@RequestParam String Search_Word) {
         try {
-            List<EnTable> result = searchService.searchEnWord(word);
+            List<EnTable> result = searchService.searchEnWord(Search_Word);
             return ResponseEntity.ok(result);
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();
@@ -42,9 +42,9 @@ public class SearchController {
     }
 
     @GetMapping("/cn")
-    public ResponseEntity<List<CnTable>> searchCnWord(@RequestParam String word) {
+    public ResponseEntity<List<CnTable>> searchCnWord(@RequestParam String Search_Word) {
         try {
-            List<CnTable> result = searchService.searchCnWord(word);
+            List<CnTable> result = searchService.searchCnWord(Search_Word);
             return ResponseEntity.ok(result);
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();

@@ -31,48 +31,48 @@ public class SearchService {
         this.cnTableRepository = cnTableRepository;
     }
 
-    public List<JpTable> searchJpWord(String word) {
+    public List<JpTable> searchJpWord(String Search_Word) {
         // 빈 문자열 또는 null 체크
-        if (word == null || word.trim().isEmpty()) {
+        if (Search_Word == null || Search_Word.trim().isEmpty()) {
             return null; // 빈 결과 반환
         }
         // 단어 또는 뜻에서 검색
-        resultByJpWord = jpTableRepository.findByWordContaining(word);
+        resultByJpWord = jpTableRepository.findByWordContaining(Search_Word);
 
         if (resultByJpWord.isEmpty()) {
-            resultByJpMeaning = jpTableRepository.findByMeaningContaining(word);
+            resultByJpMeaning = jpTableRepository.findByMeaningContaining(Search_Word);
             return resultByJpMeaning;
         }
         // 모든 결과 반환
         return resultByJpWord;
     }
 
-    public List<EnTable> searchEnWord(String word) {
+    public List<EnTable> searchEnWord(String Search_Word) {
         // 빈 문자열 또는 null 체크
-        if (word == null || word.trim().isEmpty()) {
+        if (Search_Word == null || Search_Word.trim().isEmpty()) {
             return null; // 빈 결과 반환
         }
         // 단어 또는 뜻에서 검색
-        resultByEnWord = enTableRepository.findByWordContaining(word);
+        resultByEnWord = enTableRepository.findByWordContaining(Search_Word);
 
         if (resultByEnWord.isEmpty()) {
-            resultByEnMeaning = enTableRepository.findByMeaningContaining(word);
+            resultByEnMeaning = enTableRepository.findByMeaningContaining(Search_Word);
             return resultByEnMeaning;
         }
         // 모든 결과 반환
         return resultByEnWord;
     }
 
-    public List<CnTable> searchCnWord(String word) {
+    public List<CnTable> searchCnWord(String Search_Word) {
         // 빈 문자열 또는 null 체크
-        if (word == null || word.trim().isEmpty()) {
+        if (Search_Word == null || Search_Word.trim().isEmpty()) {
             return null; // 빈 결과 반환
         }
         // 단어 또는 뜻에서 검색
-        resultByCnWord = cnTableRepository.findByWordContaining(word);
+        resultByCnWord = cnTableRepository.findByWordContaining(Search_Word);
 
         if (resultByCnWord.isEmpty()) {
-            resultByCnMeaning = cnTableRepository.findByMeaningContaining(word);
+            resultByCnMeaning = cnTableRepository.findByMeaningContaining(Search_Word);
             return resultByCnMeaning;
         }
         // 모든 결과 반환
