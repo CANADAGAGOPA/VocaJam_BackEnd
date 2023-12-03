@@ -12,7 +12,6 @@ import java.util.List;
 
 @Repository
 public interface EnTableRepository extends JpaRepository<EnTable, Integer> {
-
     List<EnTable> findByMeaningContaining(String searchKeyword);
     List<EnTable> findByWordContaining(String searchKeyword);
 }
