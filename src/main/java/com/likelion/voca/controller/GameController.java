@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(origins = "http://localhost:3000") // 경우에 따라 3001번으로 변경 필요
 @RestController
 @RequestMapping("/game")
 public class GameController {
@@ -20,7 +21,6 @@ public class GameController {
     @Autowired
     private GameService GameService;
 
-    @CrossOrigin(origins = "http://localhost:3001")
     @GetMapping("/jp")
     public ResponseEntity<Map<String, String>> getJPWordGame() {
         // 랜덤한 일본어 단어와 해당 단어의 의미를 가져오기
@@ -41,7 +41,6 @@ public class GameController {
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin(origins = "http://localhost:3001")
     @GetMapping("/cn")
     public ResponseEntity<Map<String, String>> getCNWordGame() {
         // 랜덤한 일본어 단어와 해당 단어의 의미를 가져오기
@@ -62,7 +61,6 @@ public class GameController {
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin(origins = "http://localhost:3001")
     @GetMapping("/en")
     public ResponseEntity<Map<String, String>> getENWordGame() {
         // 랜덤한 일본어 단어와 해당 단어의 의미를 가져오기
