@@ -21,6 +21,7 @@ public class SearchController {
         this.searchService = searchService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3001")
     @GetMapping("/jp")
     public ResponseEntity<List<JpTable>> searchJpWord(@RequestParam String Search_Word) {
         try {
@@ -31,6 +32,7 @@ public class SearchController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3001")
     @GetMapping("/en")
     public ResponseEntity<List<EnTable>> searchEnWord(@RequestParam String Search_Word) {
         try {
@@ -41,6 +43,7 @@ public class SearchController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3001")
     @GetMapping("/cn")
     public ResponseEntity<List<CnTable>> searchCnWord(@RequestParam String Search_Word) {
         try {
