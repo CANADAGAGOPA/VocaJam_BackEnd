@@ -3,14 +3,17 @@ package com.likelion.voca.controller;
 import com.likelion.voca.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(origins = "http://localhost:3000") // 경우에 따라 3001번으로 변경 필요
 @RestController
 @RequestMapping("/game")
 public class GameController {
@@ -38,7 +41,6 @@ public class GameController {
         return ResponseEntity.ok(response);
     }
 
-
     @GetMapping("/cn")
     public ResponseEntity<Map<String, String>> getCNWordGame() {
         // 랜덤한 일본어 단어와 해당 단어의 의미를 가져오기
@@ -58,7 +60,6 @@ public class GameController {
 
         return ResponseEntity.ok(response);
     }
-
 
     @GetMapping("/en")
     public ResponseEntity<Map<String, String>> getENWordGame() {

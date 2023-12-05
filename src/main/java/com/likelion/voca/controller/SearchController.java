@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+@CrossOrigin(origins = "http://localhost:3000") // 경우에 따라 3001번으로 변경 필요
 @RestController
 @RequestMapping("/search")
 public class SearchController {
