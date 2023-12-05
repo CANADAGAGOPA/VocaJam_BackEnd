@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/game")
 public class GameController {
@@ -20,10 +18,24 @@ public class GameController {
     @Autowired
     private GameService GameService;
 
-    @CrossOrigin(origins = "http://localhost:3001")
+    private Set<String> usedWords = new HashSet<>(); // 중복된 단어를 방지하기 위한 캐시
+
+    @Autowired
+    public GameController(GameService gameService) {
+        this.GameService = gameService;
+    }
+
     @GetMapping("/jp")
     public ResponseEntity<Map<String, String>> getJPWordGame() {
-        // 랜덤한 일본어 단어와 해당 단어의 의미를 가져오기
+        // 중복을 피하기 위해 새로운 단어 가져오기
+        String newWord;
+        do {
+            Map<String, String> randomJPWordAndMeaning = GameService.getRandomJPWordAndMeaning();
+            newWord = randomJPWordAndMeaning.get("word");
+            // 중복된 단어를 방지하기 위해 사용된 단어 목록에 추가
+            usedWords.add(newWord);
+        } while (!usedWords.add(newWord)); // 중복된 단어가 나올 때까지 반복
+
         Map<String, String> wordAndMeaning = GameService.getRandomJPWordAndMeaning();
 
         // 랜덤한 세 개의 다른 의미를 가져오기
@@ -41,10 +53,14 @@ public class GameController {
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin(origins = "http://localhost:3001")
     @GetMapping("/cn")
     public ResponseEntity<Map<String, String>> getCNWordGame() {
-        // 랜덤한 일본어 단어와 해당 단어의 의미를 가져오기
+        // 중복을 피하기 위해 새로운 단어 가져오기
+        String newWord;
+        do {
+            newWord = GameService.getRandomCNWordAndMeaning().get("word");
+        } while (!usedWords.add(newWord)); // 중복된 단어가 나올 때까지 반복
+        // 랜덤한 중국어 단어와 해당 단어의 의미를 가져오기
         Map<String, String> wordAndMeaning = GameService.getRandomCNWordAndMeaning();
 
         // 랜덤한 세 개의 다른 의미를 가져오기
@@ -62,10 +78,15 @@ public class GameController {
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin(origins = "http://localhost:3001")
     @GetMapping("/en")
     public ResponseEntity<Map<String, String>> getENWordGame() {
-        // 랜덤한 일본어 단어와 해당 단어의 의미를 가져오기
+        // 중복을 피하기 위해 새로운 단어 가져오기
+        String newWord;
+        do {
+            newWord = GameService.getRandomENWordAndMeaning().get("word");
+        } while (!usedWords.add(newWord)); // 중복된 단어가 나올 때까지 반복
+
+        // 랜덤한 영어 단어와 해당 단어의 의미를 가져오기
         Map<String, String> wordAndMeaning = GameService.getRandomENWordAndMeaning();
 
         // 랜덤한 세 개의 다른 의미를 가져오기
