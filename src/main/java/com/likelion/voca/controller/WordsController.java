@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/words")
+// @CrossOrigin(origins = "https://6754-2001-2d8-f0a1-5886-d110-4dd0-5558-bbd5.ngrok-free.app")
 public class WordsController {
 
     @Autowired
