@@ -17,7 +17,7 @@ import java.util.*;
 @Service
 public class VocaService {
 
-    @Autowired
+    @Autowired // 테이블 리포지토리 객체를 자동으로 연결
     private CnTableRepository cnTableRepository;
 
     @Autowired
@@ -26,10 +26,10 @@ public class VocaService {
     @Autowired
     private JpTableRepository jpTableRepository;
 
-    // 중국어 단어 작성 처리
+    // 중국어 단어 작성 처리 (테이블에 저장하는 역할을 수행)
     public void cnWrite(CnTable cnTable){
 
-        cnTableRepository.save(cnTable);
+        cnTableRepository.save(cnTable); // JPA 에서 제공하는 기능을 사용
     }
 
     // 영어 단어 작성 처리
@@ -44,7 +44,7 @@ public class VocaService {
         jpTableRepository.save(jpTable);
     }
 
-    // 중국어 단어의 필드들을 리스트로 가져오는 메서드
+    // 중국어 단어의 필드들을 리스트의 형태로 가져오는 메서드
     public List<CnTable> getAllCnTableFields() {
         return cnTableRepository.findAll();
     }
@@ -121,3 +121,5 @@ public class VocaService {
         jpTableRepository.save(existingJpTable);
     }
 }
+
+// 비즈니스 로직을 처리하고, 이를 통해 데이터베이스와의 상호작용이나 다양한 작업을 수행

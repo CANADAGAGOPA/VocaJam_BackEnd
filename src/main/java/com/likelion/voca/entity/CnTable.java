@@ -20,3 +20,4 @@ public class CnTable {
 
     private String pronunciation;
 }
+// 엔티티 클래스는 데이터베이스의 특정 테이블과 매핑
