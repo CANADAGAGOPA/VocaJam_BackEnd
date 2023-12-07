@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -29,6 +30,9 @@ public class WordsController {
             return ResponseEntity.notFound().build();
         }
 
+        // 데이터가 존재할 경우 OK 상태코드와 함께 역순으로 된 데이터 반환
+        Collections.reverse(cnTableFields);
+
         // 데이터가 존재할 경우 OK 상태코드와 함께 데이터 반환
         return ResponseEntity.ok(cnTableFields);
     }
@@ -43,6 +47,9 @@ public class WordsController {
             return ResponseEntity.notFound().build();
         }
 
+        // 데이터가 존재할 경우 OK 상태코드와 함께 역순으로 된 데이터 반환
+        Collections.reverse(enTableFields);
+
         // 데이터가 존재할 경우 OK 상태코드와 함께 데이터 반환
         return ResponseEntity.ok(enTableFields);
     }
@@ -56,6 +63,9 @@ public class WordsController {
         if (jpTableFields.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
+
+        // 데이터가 존재할 경우 OK 상태코드와 함께 역순으로 된 데이터 반환
+        Collections.reverse(jpTableFields);
 
         // 데이터가 존재할 경우 OK 상태코드와 함께 데이터 반환
         return ResponseEntity.ok(jpTableFields);
@@ -134,3 +144,5 @@ public class WordsController {
     }
 }
 
+// 컨트롤러는 클라이언트(웹 브라우저, 모바일 앱 등)로부터의 HTTP 요청을 받아들이고, 해당 요청을 처리하는 데 필요한 작업을 수행
+// 컨트롤러는 사용자 요청을 받아 서비스 계층으로 전달하고, 서비스 계층에서 수행된 비즈니스 로직의 결과를 받아 응답을 생성

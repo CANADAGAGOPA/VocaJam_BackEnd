@@ -25,3 +25,9 @@ public class CorsConfig implements WebMvcConfigurer { // CORS 를 구성하기 �
         };
     }
 }
+
+// CORS 구성은 /words/** 패턴의 URI에 대해서 특정 오리진에서 오는 요청을 허용하고,
+// 특정 메서드 및 헤더 등에 대한 제한을 설정하는 역할
+
+// CORS(Cross-Origin Resource Sharing)를 구성하기 위한 설정 클래스
+// 다른 도메인에서 리소스 요청이 올 때 브라우저에서 보안 상의 이유로 차단되는 문제를 해결하기 위한 메커니즘
